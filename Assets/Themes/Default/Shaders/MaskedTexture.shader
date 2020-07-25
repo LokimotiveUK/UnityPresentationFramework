@@ -1,4 +1,6 @@
-﻿Shader "Custom/MaskedTexture" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/MaskedTexture" {
    Properties
    {
    	  _Color ("Main Color", Color) = (0.5,0.5,0.5,1)
@@ -38,7 +40,7 @@
 		{
 			fragmentInput o;
 
-			o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+			o.pos = UnityObjectToClipPos (v.vertex);
 			o.uv = v.texcoord.xy;
 
 			return o;
